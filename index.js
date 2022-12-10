@@ -3,12 +3,13 @@
 const cats = ["Milo", "Otis", "Garfield"];
 
 function destructivelyAppendCat(name) {
-    
-    cats.push(name);
+    if (!window.cats){
+        window.cats = [];
+    }
+    window.cats.push(name);
 }
 
-destructivelyAppendCat("Ralph");
-console.log(cats);
+
 
 function destructivelyPrependCat(name) {
     // Create an array of cats if it doesn't already exist
@@ -58,9 +59,19 @@ function destructivelyPrependCat(name) {
     // Return the new array
     return newCats;
   }
-  function removeLastCat(cats) {
-    let newCats = cats.slice(cats); // create a copy of the original array
+  function removeLastCat(name) {
+    let newCats = cats.slice(name); // create a copy of the original array
     newCats.splice(-1, 1); // remove the last element
+    return newCats;
+  }
+  function removeFirstCat(name) {
+    // Make a copy of the original array so we don't modify it directly
+    let newCats = cats.slice();
+    
+    // Use the shift() method to remove the first element from the array
+    let firstCat = newCats.shift();
+    
+    // Return the new array with the first cat removed
     return newCats;
   }
   
